@@ -4,27 +4,32 @@ const Form = ({ addStudent }) => {
     const [name, setName] = useState('')
     const [favoriteBands, setFavoriteBands] = useState('')
     const [favoriteFoods, setFavoriteFoods] = useState('')
+    const [location, setLocation] = useState('')
     const [pets, setPets] = useState('')
     const [image, setImage] = useState('')
 
-    const submitNewStudent = () => {
+    const submitNewStudent = (event) => {
+        event.preventDefault()
         const newStudent = {
             id: Date.now(),
-            name,
-            favoriteBands,
-            favoriteFoods,
-            pets,
-            image
+            name: name,
+            favoriteBands: favoriteBands,
+            favoriteFoods: favoriteFoods,
+            pets: pets,
+            location: location,
+            image: image
         }
         addStudent(newStudent)
         clearInputs()
     }
+    // debugger
 
     const clearInputs = () => {
         setName('')
         setFavoriteBands('')
         setFavoriteFoods('')
         setPets('')
+        // setLocation('')
         setImage('')
     }
 
@@ -60,12 +65,19 @@ const Form = ({ addStudent }) => {
             />
             <input
                 type='text'
+                placeholder='Location'
+                name='location'
+                value={location}
+                onChange={event => setLocation(event.target.value)}
+            />
+            <input
+                type='text'
                 placeholder='Image'
                 name='image'
                 value={image}
                 onChange={event => setImage(event.target.value)}
             />
-            <button onClick={() => submitNewStudent()}>Add Student</button>
+            <button onClick={(event) => submitNewStudent(event)}>Add Student</button>
         </form>
     )
 }

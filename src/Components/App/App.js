@@ -16,7 +16,7 @@ function App() {
         throw new Error(response.status)
       }
       setStudents(students.students)
-      console.log(students.students)
+      console.log('students', students.students)
     } catch(error) {
     }
   }
@@ -25,10 +25,11 @@ function App() {
     getStudents()
   }, [])
 
-  const deleteStudent = async (id) => {
+  const deleteStudent = (id) => {
+    console.log(id)
     const deletedStudent = students.filter(student => student.id !== id)
     try {
-      const response = await fetch(`http://localhost:3001/api/v1/students/${id}`, {
+      const response = fetch(`http://localhost:3001/api/v1/students/${id}`, {
         'method': 'DELETE'
       });
       if (!response.ok) {
@@ -46,6 +47,7 @@ function App() {
   }
 
   const addStudent = async (newStudent) => {
+    console.log(newStudent)
     try {
       const response = await fetch('http://localhost:3001/api/v1/students', {
         method: 'POST',
@@ -55,6 +57,7 @@ function App() {
           favoriteBands: newStudent.favoriteBands,
           favoriteFoods: newStudent.favoriteFoods,
           pets: newStudent.pets,
+          location: newStudent.location,
           image: newStudent.image
         }),
         headers: {
@@ -74,7 +77,9 @@ function App() {
 
   return (
     <div className="App">
-      <Form addStudent={addStudent}/>
+      <Form 
+      addStudent={addStudent}
+      />
       <Students 
         students={students}
         deleteStudent={deleteStudent}

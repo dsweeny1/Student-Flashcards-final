@@ -1,18 +1,26 @@
 import React from 'react'
-import StudentCard from '../StudentCard/StudentCard'
+import StudentCardBack from '../StudentCardBack/StudentCardBack'
+import StudentCardFront from '../StudentCardFront/StudentCardFront'
 
 const Students = ({ students, deleteStudent }) => {
     const studentCards = students.map(student => {
+        // {console.log(student.id)}
         return (
-            <StudentCard 
-                image={student.image}
-                name={student.name}
-                favoriteBands={student.favoriteBands}
-                favoriteFoods={student.favoriteFoods}
-                pets={student.pets}
-                deleteStudent={deleteStudent}
-                key={student.id}
-            />
+            <div>
+                <StudentCardFront 
+                    image={student.image}
+                    id={student.id}
+                    key={student.id}
+                    />
+                    <StudentCardBack 
+                    name={student.name}
+                    favoriteBands={student.favoriteBands}
+                    favoriteFoods={student.favoriteFoods}
+                    pets={student.pets}
+                    location={student.location}
+                    deleteStudent={deleteStudent}
+                    />
+            </div>
         )
     })
     return (
