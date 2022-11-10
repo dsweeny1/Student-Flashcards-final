@@ -1,30 +1,28 @@
-import React from 'react'
-import StudentCardBack from '../StudentCardBack/StudentCardBack'
-import StudentCardFront from '../StudentCardFront/StudentCardFront'
+import React, { useState } from 'react'
+// import StudentCardBack from '../StudentCardBack/StudentCardBack'
+import StudentCard from '../StudentCard/StudentCard'
+import './Students.css'
 
 const Students = ({ students, deleteStudent }) => {
     const studentCards = students.map(student => {
-        // {console.log(student.id)}
         return (
-            <div>
-                <StudentCardFront 
+            <section>
+                <StudentCard 
                     image={student.image}
-                    id={student.id}
-                    key={student.id}
-                    />
-                    <StudentCardBack 
                     name={student.name}
                     favoriteBands={student.favoriteBands}
                     favoriteFoods={student.favoriteFoods}
                     pets={student.pets}
                     location={student.location}
                     deleteStudent={deleteStudent}
+                    id={student.id}
+                    key={student.id}
                     />
-            </div>
+            </section>
         )
     })
     return (
-        <section className='card-container'>
+        <section className='card-grid'>
             {studentCards}
         </section>
     )

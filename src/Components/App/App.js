@@ -1,7 +1,9 @@
 import './App.css';
 import React, {useState, useEffect} from 'react'
+import { Switch, Route } from 'react-router-dom'
 import Students from '../Students/Students';
 import Form from '../Form/Form'
+import Header from '../Header/Header';
 
 function App() {
   const [students, setStudents] = useState([])
@@ -46,10 +48,10 @@ function App() {
     setStudents(deletedStudent)
   }
 
-  const addStudent = async (newStudent) => {
+  const addStudent = (newStudent) => {
     console.log(newStudent)
     try {
-      const response = await fetch('http://localhost:3001/api/v1/students', {
+      const response = fetch('http://localhost:3001/api/v1/students', {
         method: 'POST',
         body: JSON.stringify({
           id: newStudent.id,
@@ -66,7 +68,7 @@ function App() {
       if (!response.ok) {
         throw new Error(response.status)
       }
-      const data = await response.json();
+      const data = response.json();
       return data;
     }
     catch (error) {
@@ -77,13 +79,32 @@ function App() {
 
   return (
     <div className="App">
-      <Form 
-      addStudent={addStudent}
-      />
-      <Students 
-        students={students}
-        deleteStudent={deleteStudent}
-      />
+      <Header />
+      <Switch>
+        <Route 
+        exact path='/'
+        render={ () => {
+          return (
+            <Students 
+              students={students}
+              deleteStudent={deleteStudent}
+            />
+          )
+        }}
+        />
+        <Route 
+        path='/students/form'
+        render={ () => {
+          return (
+            <div>
+              <Form 
+              addStudent={addStudent}
+              />
+            </div>
+          )
+        }}
+        />
+      </Switch>
     </div>
   );
 }

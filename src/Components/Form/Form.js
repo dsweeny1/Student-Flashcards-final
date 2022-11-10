@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import { useHistory } from 'react-router-dom'
+import './Form.css'
 
 const Form = ({ addStudent }) => {
     const [name, setName] = useState('')
@@ -7,6 +9,8 @@ const Form = ({ addStudent }) => {
     const [location, setLocation] = useState('')
     const [pets, setPets] = useState('')
     const [image, setImage] = useState('')
+    const [error, setError] = useState('')
+    const history = useHistory()
 
     const submitNewStudent = (event) => {
         event.preventDefault()
@@ -19,67 +23,73 @@ const Form = ({ addStudent }) => {
             location: location,
             image: image
         }
-        addStudent(newStudent)
-        clearInputs()
+        if(!name || !favoriteBands || !favoriteFoods || !pets || !location) {
+            setError('Please Add Student Information')
+        } else {
+            setError('')
+            history.push('/')
+            addStudent(newStudent)
+            clearInputs()
+        }
     }
-    // debugger
 
     const clearInputs = () => {
         setName('')
         setFavoriteBands('')
         setFavoriteFoods('')
         setPets('')
-        // setLocation('')
+        setLocation('')
         setImage('')
     }
 
-    return (
-        <form>
-            <input
-                type='text'
-                placeholder='Name'
-                name='name'
-                value={name}
-                onChange={event => setName(event.target.value)}
-            />
-            <input
-                type='text'
-                placeholder='Favorite Bands'
-                name='favoriteBands'
-                value={favoriteBands}
-                onChange={event => setFavoriteBands(event.target.value)}
-            />
-            <input
-                type='text'
-                placeholder='Favorite Foods'
-                name='favoriteFoods'
-                value={favoriteFoods}
-                onChange={event => setFavoriteFoods(event.target.value)}
-            />
-            <input
-                type='text'
-                placeholder='Pets'
-                name='pets'
-                value={pets}
-                onChange={event => setPets(event.target.value)}
-            />
-            <input
-                type='text'
-                placeholder='Location'
-                name='location'
-                value={location}
-                onChange={event => setLocation(event.target.value)}
-            />
-            <input
-                type='text'
-                placeholder='Image'
-                name='image'
-                value={image}
-                onChange={event => setImage(event.target.value)}
-            />
-            <button onClick={(event) => submitNewStudent(event)}>Add Student</button>
-        </form>
-    )
+        return (
+            <form>
+                <input
+                    type='text'
+                    name='name'
+                    placeholder='Name'
+                    value={name}
+                    onChange={event => setName(event.target.value)}
+                />
+                <input
+                    type='text'
+                    placeholder='Favorite Bands'
+                    name='favoriteBands'
+                    value={favoriteBands}
+                    onChange={event => setFavoriteBands(event.target.value)}
+                />
+                <input
+                    type='text'
+                    placeholder='Favorite Foods'
+                    name='favoriteFoods'
+                    value={favoriteFoods}
+                    onChange={event => setFavoriteFoods(event.target.value)}
+                />
+                <input
+                    type='text'
+                    placeholder='Pets'
+                    name='pets'
+                    value={pets}
+                    onChange={event => setPets(event.target.value)}
+                />
+                <input
+                    type='text'
+                    placeholder='Location'
+                    name='location'
+                    value={location}
+                    onChange={event => setLocation(event.target.value)}
+                />
+                <input
+                    type='text'
+                    placeholder='Image'
+                    name='image'
+                    value={image}
+                    onChange={event => setImage(event.target.value)}
+                />
+                <button className='submit-button' onClick={(event) => submitNewStudent(event)}>Add Student</button>
+                <p>{error}</p>
+            </form>
+        )
 }
 
 export default Form
