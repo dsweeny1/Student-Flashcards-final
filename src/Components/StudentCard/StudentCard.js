@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import './StudentCard.css'
+import PropTypes from 'prop-types';
 
 const StudentCard = ({ id, name, favoriteBands, favoriteFoods, location, pets, image, deleteStudent }) => {
     const [flip, setFlip] = useState(false)
         return (
             <div>
-            <div className={`card ${flip ? 'flip' : ''}`}>
+            <div className={`card ${flip ? 'flip' : ''}`} id={id} key={id}>
                 <div className='front' onClick={() => setFlip(!flip)}>
                     {image && <img src={image} alt={`${name} picture`}/>}
                     {!image && <h2>No Image Available!</h2>}
@@ -24,3 +25,14 @@ const StudentCard = ({ id, name, favoriteBands, favoriteFoods, location, pets, i
 }
 
 export default StudentCard
+
+StudentCard.propTypes = {
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    favoriteBands: PropTypes.string.isRequired, 
+    favoriteFoods: PropTypes.string.isRequired, 
+    location: PropTypes.string.isRequired, 
+    pets: PropTypes.string.isRequired, 
+    image: PropTypes.string, 
+    deleteStudent: PropTypes.func
+}
