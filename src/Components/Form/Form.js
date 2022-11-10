@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import './Form.css'
+import PropTypes from 'prop-types';
 
 const Form = ({ addStudent }) => {
     const [name, setName] = useState('')
@@ -93,3 +94,7 @@ const Form = ({ addStudent }) => {
 }
 
 export default Form
+
+Form.propTypes = {
+    addStudent: PropTypes.func
+}

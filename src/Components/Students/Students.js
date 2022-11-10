@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-// import StudentCardBack from '../StudentCardBack/StudentCardBack'
+import React from 'react'
 import StudentCard from '../StudentCard/StudentCard'
 import './Students.css'
+import PropTypes from 'prop-types';
 
 const Students = ({ students, deleteStudent }) => {
     const studentCards = students.map(student => {
@@ -29,3 +29,8 @@ const Students = ({ students, deleteStudent }) => {
 }
 
 export default Students
+
+Students.propTypes = {
+    students: PropTypes.arrayOf(PropTypes.object),
+    deleteStudent: PropTypes.func.isRequired
+}
