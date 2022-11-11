@@ -42,7 +42,7 @@
 
 .card .back {
   transform: rotateY(180deg);
-  background: url(../../assests/bluegirl-homepage_orig.jpeg);
+  background: url(../../assets/bluegirl-homepage_orig.jpeg);
   opacity: .9;
   margin-bottom: 37px;
   border-radius: .35rem;
@@ -58,7 +58,7 @@
 
 .delete-button {
   margin-bottom: -33px;
-  margin-left: 365px;
+  margin-left: 374px;
 }
 
 h2 {

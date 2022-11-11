@@ -52,6 +52,7 @@ const Form = ({ addStudent }) => {
                     value={name}
                     onChange={event => setName(event.target.value)}
                 />
+                <label>*Required</label>
                 <input
                     type='text'
                     placeholder='Favorite Bands'
@@ -59,6 +60,7 @@ const Form = ({ addStudent }) => {
                     value={favoriteBands}
                     onChange={event => setFavoriteBands(event.target.value)}
                 />
+                <label>*Required</label>
                 <input
                     type='text'
                     placeholder='Favorite Foods'
@@ -66,6 +68,7 @@ const Form = ({ addStudent }) => {
                     value={favoriteFoods}
                     onChange={event => setFavoriteFoods(event.target.value)}
                 />
+                <label>*Required</label>
                 <input
                     type='text'
                     placeholder='Pets'
@@ -73,6 +76,7 @@ const Form = ({ addStudent }) => {
                     value={pets}
                     onChange={event => setPets(event.target.value)}
                 />
+                <label>*Required</label>
                 <input
                     type='text'
                     placeholder='Location'
@@ -80,6 +84,7 @@ const Form = ({ addStudent }) => {
                     value={location}
                     onChange={event => setLocation(event.target.value)}
                 />
+                <label>*Required</label>
                 <input
                     type='text'
                     placeholder='Image'
@@ -87,6 +92,7 @@ const Form = ({ addStudent }) => {
                     value={image}
                     onChange={event => setImage(event.target.value)}
                 />
+                <label>*Optional</label>
                 <button className='submit-button' onClick={(event) => submitNewStudent(event)}>Add Student</button>
                 <p>{error}</p>
             </form>
@@ -96,5 +102,5 @@ const Form = ({ addStudent }) => {
 export default Form
 
 Form.propTypes = {
-    addStudent: PropTypes.func
+    addStudent: PropTypes.func.isRequired
 }
