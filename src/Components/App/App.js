@@ -4,22 +4,26 @@ import { Switch, Route } from 'react-router-dom'
 import Students from '../Students/Students';
 import Form from '../Form/Form'
 import Header from '../Header/Header';
+import Error from '../Error/Error'
 
 function App() {
   const [students, setStudents] = useState([])
+  const [error, setError] = useState(false)
 
   const getStudents = async () => {
-
     const url = (`http://localhost:3001/api/v1/students`)
     try {
       const response = await fetch(url)
       const students = await response.json()
+      console.log(response)
       if (!response.ok) {
+        setError(true)
         throw new Error(response.status)
       }
       setStudents(students.students)
-      console.log('students', students.students)
     } catch(error) {
+      setError(true)
+      console.log(error)
     }
   }
 
@@ -72,7 +76,7 @@ function App() {
       return data;
     }
     catch (error) {
-      console.log(error.message)
+      console.log('error', error.message)
     }
     setStudents([...students, newStudent])
   };
@@ -85,24 +89,31 @@ function App() {
         exact path='/'
         render={ () => {
           return (
-            <Students 
+            <>
+            {error && <Error />}
+            {!error && <Students 
               students={students}
               deleteStudent={deleteStudent}
-            />
+            />}
+            </>
           )
         }}
         />
         <Route 
-        path='/students/form'
+        exact path='/students/form'
         render={ () => {
           return (
             <div>
-              <Form 
+              {error && <Error />}
+             {!error && <Form 
               addStudent={addStudent}
-              />
+              />}
             </div>
           )
         }}
+        />
+        <Route 
+        path='*' component={Error}
         />
       </Switch>
     </div>

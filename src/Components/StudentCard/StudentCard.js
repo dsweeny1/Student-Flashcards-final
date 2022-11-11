@@ -9,7 +9,7 @@ const StudentCard = ({ id, name, favoriteBands, favoriteFoods, location, pets, i
             <div className={`card ${flip ? 'flip' : ''}`} id={id} key={id}>
                 <div className='front' onClick={() => setFlip(!flip)}>
                     {image && <img src={image} alt={`${name} picture`}/>}
-                    {!image && <h2>No Image Available!</h2>}
+                    {!image && <img src={'https://ca.slack-edge.com/T029P2S9M-U02Q8JAJW0P-g654fec14191-512'} />}
                 </div>
                 <div className='back' onClick={() => setFlip(!flip)}>
                     <h2 className='name'>Name: {name}</h2>
