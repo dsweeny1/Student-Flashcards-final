@@ -79,8 +79,8 @@ h2 {
 }
 .flip {
   --rotate-y: 180deg;
-  background-color: white;
-  opacity: 10;
+  /* background-color: white; */
+  /* opacity: 10; */
 }
   .hidden {
     display: none;
