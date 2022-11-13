@@ -35,7 +35,7 @@
 .card .back {
   position: absolute;
   padding: 1rem;
-  /* backface-visibility: hidden; */
+  backface-visibility: hidden;
   margin-bottom: -100px;
 }
 
