@@ -1,0 +1,21 @@
+{"students": [
+    {
+        "id": 1,
+        "name": "Anthony Shellman",
+        "favoriteBands": "Rubber",
+        "favoriteFoods": "Pizza",
+        "pets": "None (yet)",
+        "location": "Denver, CO",
+        "image": "https://ca.slack-edge.com/T029P2S9M-U03499VGM8F-2584f1b7097d-512"
+    },
+    {
+        "id": 2,
+        "name": "Beth Wilson",
+        "favoriteBands": "Country Music",
+        "favoriteFoods": "Thai",
+        "pets": "Jimmy Dog",
+        "location": "Colorado",
+        "image": "https://ca.slack-edge.com/T029P2S9M-U03EQ0E5S5S-01480fa89527-512"
+    }
+]
+}

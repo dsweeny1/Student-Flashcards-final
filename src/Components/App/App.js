@@ -11,7 +11,7 @@ function App() {
   const [error, setError] = useState(false)
 
   const getStudents = async () => {
-    const url = (`http://localhost:3001/api/v1/students`)
+    const url = (`https://final-project-api-aa6j.vercel.app/api/v1/students`)
     try {
       const response = await fetch(url)
       const students = await response.json()
@@ -22,7 +22,6 @@ function App() {
       }
       setStudents(students.students)
     } catch(error) {
-      setError(true)
       console.log(error)
     }
   }
@@ -35,7 +34,7 @@ function App() {
     console.log(id)
     const deletedStudent = students.filter(student => student.id !== id)
     try {
-      const response = fetch(`http://localhost:3001/api/v1/students/${id}`, {
+      const response = fetch(`https://final-project-api-aa6j.vercel.app/api/v1/students/${id}`, {
         'method': 'DELETE'
       });
       if (!response.ok) {
@@ -55,7 +54,7 @@ function App() {
   const addStudent = (newStudent) => {
     console.log(newStudent)
     try {
-      const response = fetch('http://localhost:3001/api/v1/students', {
+      const response = fetch('https://final-project-api-aa6j.vercel.app/api/v1/students', {
         method: 'POST',
         body: JSON.stringify({
           id: newStudent.id,
