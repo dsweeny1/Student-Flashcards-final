@@ -66,3 +66,15 @@ h2 {
   margin-left: 44px;
   background-color: rgb(219, 219, 74);
 }
+
+@media only screen and (min-width: 270px) and (max-width:700px) {
+.card .front,
+.card .back {
+  position: absolute;
+  padding: 1rem;
+  margin-bottom: -100px;
+  height: 60vh;
+  width: 40vw;
+}
+
+}
