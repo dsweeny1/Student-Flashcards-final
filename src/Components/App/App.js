@@ -15,7 +15,6 @@ function App() {
     try {
       const response = await fetch(url)
       const students = await response.json()
-      console.log(response)
       if (!response.ok) {
         setError(true)
         throw new Error(response.status)
@@ -38,11 +37,9 @@ function App() {
         'method': 'DELETE'
       });
       if (!response.ok) {
-        console.log(response.status)
         throw new Error(response.status)
       }
       const newData = response.json();
-      console.log('newData', newData)
       return newData;
     }
     catch (error) {
